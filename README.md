@@ -5,6 +5,7 @@ https://deblokt.com/2019/09/27/05-identityserver4-adding-custom-properties-to-us
 
 Adding custom properties to a “User” model doesn’t mean that these custom properties are going to get exposed in id or access tokens. To expose a custom user property in tokens we need to create the “IProfileService” implementation. In the project root create a new folder called “Services” and add a new class named “ProfileService”. Open the “ProfileService.cs” and modify it like so:
 
+```
 using IdentityServer.Models;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
@@ -51,7 +52,9 @@ namespace IdentityServer.Services
         }
     }
 }
+```
   
 All that is left to do is to add a profile service dependency injection. Open “Startup.cs” and add a scoped service at the end of the “ConfigureServices” method like so:
-
+```
 services.AddScoped<IProfileService, ProfileService>();  
+```
